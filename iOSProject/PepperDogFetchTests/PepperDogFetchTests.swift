@@ -28,8 +28,22 @@ class PepperDogFetchTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+
+    func testFetchComics() throws {
+        let database = PostgreSQLDatabase(connectionDictionary:[
+            .Host:"192.168.70.107",
+            .Port: "5432",
+            .DatabaseName: "comics",
+            .User: "comics",
+            .Password: "comics"
+            ])
+        let results = try database.execute(sql: "select * from gcd_issue", bindings: nil)
+
+        for i in results {
         }
     }
     

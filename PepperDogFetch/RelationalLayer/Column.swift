@@ -10,10 +10,16 @@ import Foundation
 
 public class Column {
     
-    var name :String
+    let name :String
+    let type :String
+    let precision :Int?
+    let scale :Int?
     
-    init(name :String) {
+    init(name: String, type: String, precision: Int, scale: Int) {
         self.name = name;
+        self.type = type;
+        self.precision = precision;
+        self.scale = scale;
     }
     
 }

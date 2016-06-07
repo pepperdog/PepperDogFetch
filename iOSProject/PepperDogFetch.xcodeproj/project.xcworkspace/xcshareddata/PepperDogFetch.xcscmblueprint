@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B6E330E496A8BDB809CB756C484ADE61E52FFF20",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5C58CBBBD6264A835FA1696A43B23051B4D929B0" : 0,
+    "9A015C947BFD79B72C3F1158B2123D62640C54D0" : 0,
+    "B6E330E496A8BDB809CB756C484ADE61E52FFF20" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C2CA5F88-1EEC-4B1D-8117-6086D4907900",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5C58CBBBD6264A835FA1696A43B23051B4D929B0" : "PepperDogFetch\/Submodules\/hexdreamsCocoa\/",
+    "9A015C947BFD79B72C3F1158B2123D62640C54D0" : "PepperDogFetch\/SubModules\/libpq.framework\/",
+    "B6E330E496A8BDB809CB756C484ADE61E52FFF20" : "PepperDogFetch\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PepperDogFetch",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iOSProject\/PepperDogFetch.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hexdreamer\/hexdreamsCocoa.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5C58CBBBD6264A835FA1696A43B23051B4D929B0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/spacialdb\/libpq.framework.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9A015C947BFD79B72C3F1158B2123D62640C54D0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/pepperdog\/PepperDogFetch.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B6E330E496A8BDB809CB756C484ADE61E52FFF20"
+    }
+  ]
+}
