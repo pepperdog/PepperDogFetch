@@ -8,7 +8,7 @@
  
  Once the fetch has been completed, the completed flag is set, and the queues are destroyed.
  */
-public class ResultSet : Sequence {
+public class ResultSet<E> : Sequence {
 
     //let description :Table
     lazy var synchronizeQueue :dispatch_queue_t? = {
@@ -70,7 +70,7 @@ public class ResultSet : Sequence {
         fatalError()
     }
 
-    public func filter(_ includeElement: @noescape (Iterator.Element) throws -> Bool) rethrows -> [Iterator.Element] {
+    public func filter(_ includeElement: @noescape (Iterator.Element) throws -> Bool) rethrows -> [Iterator<E>.Element] {
         fatalError()
     }
 

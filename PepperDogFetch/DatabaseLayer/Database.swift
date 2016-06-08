@@ -19,8 +19,8 @@ public class Database {
         fatalError("Not implemented")
     }
 
-    func execute(sql :String, bindings :[String:SQLConvertible]?) throws -> ResultSet {
-        let resultSet = ResultSet()
+    func execute(sql :String, bindings :[String:SQLConvertible]?) throws -> ResultSet<Row> {
+        let resultSet = ResultSet<Row>()
 
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
             do {
