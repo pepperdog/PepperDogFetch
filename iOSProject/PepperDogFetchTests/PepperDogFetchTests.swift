@@ -7,14 +7,18 @@
 //
 
 import XCTest
+import PepperDogFetch
+import hexdreamsCocoa
+import XCGLogger
 @testable import PepperDogFetch
 
 class PepperDogFetchTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+
+        PepperDogFetch.log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: nil)
+}
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -28,9 +32,24 @@ class PepperDogFetchTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
+    func testFetchComics() throws {
+        let database = PostgreSQLDatabase(connectionDictionary:[
+            PostgreSQLConnectionDictionary.Host.rawValue:         "192.168.170.102",
+            PostgreSQLConnectionDictionary.Port.rawValue:         "6543",
+            PostgreSQLConnectionDictionary.DatabaseName.rawValue: "comics",
+            PostgreSQLConnectionDictionary.User.rawValue:         "comics",
+            PostgreSQLConnectionDictionary.Password.rawValue:     "comics"
+            ])
+        let results = try database.execute(sql: "select * from gcd_issue", bindings: nil)
+
+        for i in results {
+            print("\(i)")
+        }
+    }
+
 }

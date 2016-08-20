@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Column {
+open class Column {
     
     var name :String
     

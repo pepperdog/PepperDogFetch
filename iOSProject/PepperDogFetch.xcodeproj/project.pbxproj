@@ -13,6 +13,20 @@
 		B96FAF841CB0B7B0001502CB /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF831CB0B7B0001502CB /* Table.swift */; };
 		B96FAF861CB0B7C3001502CB /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF851CB0B7C3001502CB /* Column.swift */; };
 		B96FAF881CB0B7E9001502CB /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF871CB0B7E9001502CB /* Constraint.swift */; };
+		B9A336A41D20CFD800D64B25 /* ResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336A21D20CFD800D64B25 /* ResultSet.swift */; };
+		B9A336A51D20CFD800D64B25 /* ResultSetIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336A31D20CFD800D64B25 /* ResultSetIterator.swift */; };
+		B9A336B11D20D07800D64B25 /* PostgreSQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */; };
+		B9A336B21D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */; };
+		B9A336B31D20D07800D64B25 /* PostgreSQLDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */; };
+		B9A336B81D20D08100D64B25 /* ConnectionPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B51D20D08100D64B25 /* ConnectionPool.swift */; };
+		B9A336B91D20D08100D64B25 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B61D20D08100D64B25 /* Database.swift */; };
+		B9A336BA1D20D08100D64B25 /* DatabaseConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B71D20D08100D64B25 /* DatabaseConnection.swift */; };
+		B9A336F21D20D71700D64B25 /* PepperDogFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336F11D20D71700D64B25 /* PepperDogFetch.swift */; };
+		B9A336F41D20D7C700D64B25 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336F31D20D7C700D64B25 /* Row.swift */; };
+		B9A336F61D20D7F100D64B25 /* SQLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336F51D20D7F100D64B25 /* SQLConvertible.swift */; };
+		B9A336F71D20D85000D64B25 /* hexdreamsCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A336E21D20D20A00D64B25 /* hexdreamsCocoa.framework */; };
+		B9A336F81D20D85000D64B25 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A336CE1D20D1CC00D64B25 /* XCGLogger.framework */; };
+		B9A336F91D20D87100D64B25 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A336EF1D20D28700D64B25 /* libpq.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +36,76 @@
 			proxyType = 1;
 			remoteGlobalIDString = B90708881CB0A8A100DF47BD;
 			remoteInfo = PepperDogFetch;
+		};
+		B9A336CD1D20D1CC00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E3EE4519D76F280068C3A7;
+			remoteInfo = "XCGLogger (iOS)";
+		};
+		B9A336CF1D20D1CC00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 554DF41719D76FE7005708BE;
+			remoteInfo = "XCGLogger (OS X)";
+		};
+		B9A336D11D20D1CC00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 70CB94201B99E728007802FF;
+			remoteInfo = "XCGLogger (watchOS)";
+		};
+		B9A336D31D20D1CC00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5515A3DF1BA119FA0047BA31;
+			remoteInfo = "XCGLogger (tvOS)";
+		};
+		B9A336D51D20D1CC00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E3EE5019D76F280068C3A7;
+			remoteInfo = "XCGLoggerTests (iOS)";
+		};
+		B9A336D71D20D1CC00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55BB1F011B79DC7500709779;
+			remoteInfo = "XCGLoggerTests (OS X)";
+		};
+		B9A336DA1D20D1EF00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 55E3EE4419D76F280068C3A7;
+			remoteInfo = "XCGLogger (iOS)";
+		};
+		B9A336E11D20D20A00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B9218AEE1CC887A000A97389;
+			remoteInfo = hexdreamsCocoa;
+		};
+		B9A336E31D20D20A00D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B9218AF81CC887A000A97389;
+			remoteInfo = hexdreamsCocoaTests;
+		};
+		B9A336EA1D20D21100D64B25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B9218AED1CC887A000A97389;
+			remoteInfo = hexdreamsCocoa;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -35,6 +119,21 @@
 		B96FAF831CB0B7B0001502CB /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		B96FAF851CB0B7C3001502CB /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		B96FAF871CB0B7E9001502CB /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		B9A336A21D20CFD800D64B25 /* ResultSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSet.swift; sourceTree = "<group>"; };
+		B9A336A31D20CFD800D64B25 /* ResultSetIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSetIterator.swift; sourceTree = "<group>"; };
+		B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLConnection.swift; sourceTree = "<group>"; };
+		B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLConnectionDictionary.swift; sourceTree = "<group>"; };
+		B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLDatabase.swift; sourceTree = "<group>"; };
+		B9A336B51D20D08100D64B25 /* ConnectionPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPool.swift; sourceTree = "<group>"; };
+		B9A336B61D20D08100D64B25 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		B9A336B71D20D08100D64B25 /* DatabaseConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseConnection.swift; sourceTree = "<group>"; };
+		B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hexdreamsCocoa.xcodeproj; path = ../Submodules/hexdreamsCocoa/iOSProject/hexdreamsCocoa.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = ../Submodules/XCGLogger/XCGLogger/Library/XCGLogger.xcodeproj; sourceTree = "<group>"; };
+		B9A336EF1D20D28700D64B25 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
+		B9A336F11D20D71700D64B25 /* PepperDogFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PepperDogFetch.swift; sourceTree = "<group>"; };
+		B9A336F31D20D7C700D64B25 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		B9A336F51D20D7F100D64B25 /* SQLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLConvertible.swift; sourceTree = "<group>"; };
+		B9F844B51D663F800090F833 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +141,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A336F71D20D85000D64B25 /* hexdreamsCocoa.framework in Frameworks */,
+				B9A336F81D20D85000D64B25 /* XCGLogger.framework in Frameworks */,
+				B9A336F91D20D87100D64B25 /* libpq.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +164,10 @@
 				B96FAF7D1CB0B741001502CB /* PepperDogFetch */,
 				B907088B1CB0A8A100DF47BD /* PepperDogFetch */,
 				B90708971CB0A8A100DF47BD /* PepperDogFetchTests */,
+				B9A336D91D20D1D200D64B25 /* Submodules */,
+				B9A336EE1D20D28700D64B25 /* ThirdParty */,
 				B907088A1CB0A8A100DF47BD /* Products */,
+				B9F844B41D663F800090F833 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,21 +201,15 @@
 		B96FAF7D1CB0B741001502CB /* PepperDogFetch */ = {
 			isa = PBXGroup;
 			children = (
+				B9A336F11D20D71700D64B25 /* PepperDogFetch.swift */,
 				B96FAF801CB0B741001502CB /* ObjectLayer */,
 				B96FAF7F1CB0B741001502CB /* MappingLayer */,
 				B96FAF821CB0B741001502CB /* RelationalLayer */,
-				B96FAF7E1CB0B741001502CB /* AdaptorLayer */,
-				B96FAF811CB0B741001502CB /* PostgreSQLAdaptor */,
+				B9A336B41D20D08100D64B25 /* DatabaseLayer */,
+				B9A336AD1D20D07800D64B25 /* PostgreSQLDatabase */,
 			);
 			name = PepperDogFetch;
 			path = ../PepperDogFetch;
-			sourceTree = "<group>";
-		};
-		B96FAF7E1CB0B741001502CB /* AdaptorLayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AdaptorLayer;
 			sourceTree = "<group>";
 		};
 		B96FAF7F1CB0B741001502CB /* MappingLayer */ = {
@@ -127,21 +226,86 @@
 			path = ObjectLayer;
 			sourceTree = "<group>";
 		};
-		B96FAF811CB0B741001502CB /* PostgreSQLAdaptor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PostgreSQLAdaptor;
-			sourceTree = "<group>";
-		};
 		B96FAF821CB0B741001502CB /* RelationalLayer */ = {
 			isa = PBXGroup;
 			children = (
+				B9A336A21D20CFD800D64B25 /* ResultSet.swift */,
+				B9A336A31D20CFD800D64B25 /* ResultSetIterator.swift */,
 				B96FAF831CB0B7B0001502CB /* Table.swift */,
 				B96FAF851CB0B7C3001502CB /* Column.swift */,
 				B96FAF871CB0B7E9001502CB /* Constraint.swift */,
+				B9A336F31D20D7C700D64B25 /* Row.swift */,
+				B9A336F51D20D7F100D64B25 /* SQLConvertible.swift */,
 			);
 			path = RelationalLayer;
+			sourceTree = "<group>";
+		};
+		B9A336AD1D20D07800D64B25 /* PostgreSQLDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */,
+				B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */,
+				B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */,
+			);
+			path = PostgreSQLDatabase;
+			sourceTree = "<group>";
+		};
+		B9A336B41D20D08100D64B25 /* DatabaseLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B9A336B51D20D08100D64B25 /* ConnectionPool.swift */,
+				B9A336B61D20D08100D64B25 /* Database.swift */,
+				B9A336B71D20D08100D64B25 /* DatabaseConnection.swift */,
+			);
+			path = DatabaseLayer;
+			sourceTree = "<group>";
+		};
+		B9A336C51D20D1CB00D64B25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9A336CE1D20D1CC00D64B25 /* XCGLogger.framework */,
+				B9A336D01D20D1CC00D64B25 /* XCGLogger.framework */,
+				B9A336D21D20D1CC00D64B25 /* XCGLogger.framework */,
+				B9A336D41D20D1CC00D64B25 /* XCGLogger.framework */,
+				B9A336D61D20D1CC00D64B25 /* XCGLoggerTests (iOS).xctest */,
+				B9A336D81D20D1CC00D64B25 /* XCGLoggerTests (OS X).xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9A336D91D20D1D200D64B25 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */,
+				B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */,
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
+		B9A336DD1D20D20900D64B25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9A336E21D20D20A00D64B25 /* hexdreamsCocoa.framework */,
+				B9A336E41D20D20A00D64B25 /* hexdreamsCocoaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9A336EE1D20D28700D64B25 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				B9A336EF1D20D28700D64B25 /* libpq.framework */,
+			);
+			name = ThirdParty;
+			path = ../ThirdParty;
+			sourceTree = "<group>";
+		};
+		B9F844B41D663F800090F833 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9F844B51D663F800090F833 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +334,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				B9A336EB1D20D21100D64B25 /* PBXTargetDependency */,
+				B9A336DB1D20D1EF00D64B25 /* PBXTargetDependency */,
 			);
 			name = PepperDogFetch;
 			productName = PepperDogFetch;
@@ -206,9 +372,11 @@
 				TargetAttributes = {
 					B90708881CB0A8A100DF47BD = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					B90708921CB0A8A100DF47BD = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -222,6 +390,16 @@
 			mainGroup = B907087F1CB0A8A100DF47BD;
 			productRefGroup = B907088A1CB0A8A100DF47BD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B9A336DD1D20D20900D64B25 /* Products */;
+					ProjectRef = B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */;
+				},
+				{
+					ProductGroup = B9A336C51D20D1CB00D64B25 /* Products */;
+					ProjectRef = B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B90708881CB0A8A100DF47BD /* PepperDogFetch */,
@@ -229,6 +407,65 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B9A336CE1D20D1CC00D64B25 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = B9A336CD1D20D1CC00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336D01D20D1CC00D64B25 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = B9A336CF1D20D1CC00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336D21D20D1CC00D64B25 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = B9A336D11D20D1CC00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336D41D20D1CC00D64B25 /* XCGLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XCGLogger.framework;
+			remoteRef = B9A336D31D20D1CC00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336D61D20D1CC00D64B25 /* XCGLoggerTests (iOS).xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "XCGLoggerTests (iOS).xctest";
+			remoteRef = B9A336D51D20D1CC00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336D81D20D1CC00D64B25 /* XCGLoggerTests (OS X).xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "XCGLoggerTests (OS X).xctest";
+			remoteRef = B9A336D71D20D1CC00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336E21D20D20A00D64B25 /* hexdreamsCocoa.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = hexdreamsCocoa.framework;
+			remoteRef = B9A336E11D20D20A00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9A336E41D20D20A00D64B25 /* hexdreamsCocoaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = hexdreamsCocoaTests.xctest;
+			remoteRef = B9A336E31D20D20A00D64B25 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B90708871CB0A8A100DF47BD /* Resources */ = {
@@ -252,9 +489,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A336B81D20D08100D64B25 /* ConnectionPool.swift in Sources */,
 				B96FAF841CB0B7B0001502CB /* Table.swift in Sources */,
+				B9A336A41D20CFD800D64B25 /* ResultSet.swift in Sources */,
+				B9A336F41D20D7C700D64B25 /* Row.swift in Sources */,
+				B9A336A51D20CFD800D64B25 /* ResultSetIterator.swift in Sources */,
+				B9A336B21D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift in Sources */,
+				B9A336B31D20D07800D64B25 /* PostgreSQLDatabase.swift in Sources */,
+				B9A336BA1D20D08100D64B25 /* DatabaseConnection.swift in Sources */,
+				B9A336F61D20D7F100D64B25 /* SQLConvertible.swift in Sources */,
+				B9A336F21D20D71700D64B25 /* PepperDogFetch.swift in Sources */,
 				B96FAF861CB0B7C3001502CB /* Column.swift in Sources */,
 				B96FAF881CB0B7E9001502CB /* Constraint.swift in Sources */,
+				B9A336B91D20D08100D64B25 /* Database.swift in Sources */,
+				B9A336B11D20D07800D64B25 /* PostgreSQLConnection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +521,16 @@
 			isa = PBXTargetDependency;
 			target = B90708881CB0A8A100DF47BD /* PepperDogFetch */;
 			targetProxy = B90708951CB0A8A100DF47BD /* PBXContainerItemProxy */;
+		};
+		B9A336DB1D20D1EF00D64B25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "XCGLogger (iOS)";
+			targetProxy = B9A336DA1D20D1EF00D64B25 /* PBXContainerItemProxy */;
+		};
+		B9A336EB1D20D21100D64B25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = hexdreamsCocoa;
+			targetProxy = B9A336EA1D20D21100D64B25 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -301,6 +559,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../ThirdParty";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -315,7 +574,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -350,6 +609,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../ThirdParty";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -358,7 +618,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -371,6 +631,7 @@
 		B907089E1CB0A8A100DF47BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -383,12 +644,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		B907089F1CB0A8A100DF47BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -400,6 +663,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pepperdog-enteprises.PepperDogFetch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -410,6 +674,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pepperdog-enteprises.PepperDogFetchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -420,6 +685,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pepperdog-enteprises.PepperDogFetchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

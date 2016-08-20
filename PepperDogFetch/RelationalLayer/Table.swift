@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Table {
+open class Table {
     
     var name :String
     var columns :[Column]

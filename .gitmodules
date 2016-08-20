@@ -1,0 +1,6 @@
+[submodule "Submodules/XCGLogger"]
+	path = Submodules/XCGLogger
+	url = https://github.com/hexdreamer/XCGLogger.git
+[submodule "Submodules/hexdreamsCocoa"]
+	path = Submodules/hexdreamsCocoa
+	url = https://github.com/hexdreamer/hexdreamsCocoa.git
