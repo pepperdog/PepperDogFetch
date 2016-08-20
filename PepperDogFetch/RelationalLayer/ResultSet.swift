@@ -69,70 +69,6 @@ open class ResultSet<Element> : Sequence {
 
     // MARK: Sequence Protocol
 
-    /*
-    public func makeIterator() -> ResultSetIterator<Element> {
-        return ResultSetIterator<Element>(resultSet: self)
-    }
-
-    public var underestimatedCount: Int {
-        get {
-            guard let fetchingInfo = self.fetchingInfo else {
-                return self.storage.underestimatedCount
-            }
-
-            var count :Int = 0
-            fetchingInfo.synchronizeQueue.sync() {
-                count = self.storage.underestimatedCount
-            }
-            return count
-        }
-    }
-
-    public func map<T>(_ transform: (Element) throws -> T) rethrows -> [T] {
-        fatalError()
-    }
-
-    public func filter(_ isIncluded: (Element) throws -> Bool) rethrows -> [Element] {
-        fatalError()
-    }
-
-    public func forEach(_ body: (Element) throws -> Void) rethrows {
-    }
-
-    public func dropFirst(_ n: Int) -> ResultSet {
-        fatalError()
-    }
-
-    public func dropLast(_ n: Int) -> ResultSet {
-        fatalError()
-    }
-
-    public func prefix(_ maxLength: Int) -> ResultSet {
-        fatalError()
-    }
-
-    public func suffix(_ maxLength: Int) -> ResultSet {
-        fatalError()
-    }
-
-    public func split(maxSplits: Int, omittingEmptySubsequences: Bool, isSeparator: (Element) throws -> Bool) rethrows -> [ResultSet] {
-        fatalError()
-    }
-
-    public func first(where: (Element) throws -> Bool) rethrows -> Element? {
-        fatalError()
-    }
-    */
-
-
-    /// A type that provides the sequence's iteration interface and
-    /// encapsulates its iteration state.
-    //associatedtype Iterator : IteratorProtocol
-
-    /// A type that represents a subsequence of some of the sequence's elements.
-    //associatedtype SubSequence
-
-    /// Returns an iterator over the elements of this sequence.
     public func makeIterator() -> ResultSetIterator<Element> {
         return ResultSetIterator<Element>(resultSet: self)
     }
@@ -171,7 +107,15 @@ open class ResultSet<Element> : Sequence {
         fatalError()
     }
 
+    public func drop(while predicate: (Element) throws -> Bool) rethrows -> ResultSet {
+        fatalError()
+    }
+
     public func prefix(_ maxLength: Int) -> ResultSet {
+        fatalError()
+    }
+
+    public func prefix(while predicate: (Element) throws -> Bool) rethrows -> ResultSet {
         fatalError()
     }
 
