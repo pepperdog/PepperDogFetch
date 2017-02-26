@@ -2,7 +2,7 @@
 import XCGLogger
 
 public enum Errors : Error {
-    case databaseConnectionError
+    case databaseConnectionError(String)
 }
 
-let log = XCGLogger.defaultInstance()
+let log = XCGLogger.default

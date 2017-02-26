@@ -17,7 +17,7 @@ class PepperDogFetchTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        PepperDogFetch.log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLogLevel: nil)
+        PepperDogFetch.log.setup(level: .debug, showLogIdentifier: false, showFunctionName: true, showThreadName: false, showLevel: true, showFileNames: true, showLineNumbers: true, showDate: false, writeToFile: nil, fileLevel: nil)
 }
     
     override func tearDown() {
@@ -39,7 +39,7 @@ class PepperDogFetchTests: XCTestCase {
 
     func testFetchComics() throws {
         let database = PostgreSQLDatabase(connectionDictionary:[
-            PostgreSQLConnectionDictionary.Host.rawValue:         "192.168.170.102",
+            PostgreSQLConnectionDictionary.Host.rawValue:         "192.168.170.119",
             PostgreSQLConnectionDictionary.Port.rawValue:         "6543",
             PostgreSQLConnectionDictionary.DatabaseName.rawValue: "comics",
             PostgreSQLConnectionDictionary.User.rawValue:         "comics",
