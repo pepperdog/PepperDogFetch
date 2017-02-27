@@ -41,63 +41,53 @@ open class PostgreSQLConnection : DatabaseConnection {
         log.debug("Connecting...")
         try mainLoop(conn)
         self.connection = conn
+        log.debug("... connected successfully");
     }
 
     private func mainLoop(_ conn :OpaquePointer) throws {
-        var rfds :fd_set = fd_set()
-        var wfds :fd_set = fd_set()
-        var tv   :timeval = timeval()
-        var retval :Int32
-        var sock   :Int32
-        var connStatus :PostgresPollingStatusType
-        var connected :Bool = false
+        var connected = false
         
         while !connected {
-            sock = PQsocket(conn)
+            let sock = PQsocket(conn)
             if ( sock < 0 ) {
                 throw Errors.databaseConnectionError("Postgres socket is gone")
             }
             
+            var rfds = fd_set()
             C.FD_ZERO(&rfds)
+            var wfds = fd_set()
             C.FD_ZERO(&wfds)
-            
-            tv.tv_sec = 2
+            var tv = timeval()
+            tv.tv_sec = 1
             tv.tv_usec = 0
             
-            if !connected {
-                connStatus = PQconnectPoll(conn);
-                
-                switch connStatus {
-                case PGRES_POLLING_FAILED:
-                    log.debug("PGRES_POLLING_FAILED")
-                    throw Errors.databaseConnectionError("Pg connection failed: \(PQerrorMessage(conn))")
-                case PGRES_POLLING_WRITING:
-                    log.debug("PGRES_POLLING_WRITING")
-                    C.FD_SET(sock, &wfds)
-                    break
-                case PGRES_POLLING_READING:
-                    log.debug("PGRES_POLLING_READING")
-                    C.FD_SET(sock, &rfds)
-                    break
-                case PGRES_POLLING_OK:
-                    log.debug("PGRES_POLLING_OK")
-                    connected = true
-                    try initListen(conn);
-                    break
-                case PGRES_POLLING_ACTIVE:  // deprecated
-                    log.debug("PGRES_POLLING_ACTIVE - deprecated")
-                    break
-                default:
-                    throw Errors.databaseConnectionError("connection status not supported: \(connStatus)")
-                }
-            }
-            
-            if connected {
+            let connStatus = PQconnectPoll(conn);
+            switch connStatus {
+            case PGRES_POLLING_FAILED:
+                log.debug("PGRES_POLLING_FAILED")
+                throw Errors.databaseConnectionError("Pg connection failed: \(PQerrorMessage(conn))")
+            case PGRES_POLLING_WRITING:
+                log.debug("PGRES_POLLING_WRITING")
+                C.FD_SET(sock, &wfds)
+                break
+            case PGRES_POLLING_READING:
+                log.debug("PGRES_POLLING_READING")
                 C.FD_SET(sock, &rfds)
+                break
+            case PGRES_POLLING_OK:
+                log.debug("PGRES_POLLING_OK")
+                connected = true
+                //try initListen(conn);
+                return
+            case PGRES_POLLING_ACTIVE:  // deprecated
+                log.debug("PGRES_POLLING_ACTIVE - deprecated")
+                break
+            default:
+                throw Errors.databaseConnectionError("connection status not supported: \(connStatus)")
             }
             
-            retval = select(sock + Int32(1), &rfds, &wfds, nil, &tv);
-            switch retval {
+            let selectStatus = select(sock + Int32(1), &rfds, &wfds, nil, &tv);
+            switch selectStatus {
             case -1:
                 log.error("select() failed")
                 throw Errors.databaseConnectionError("select() failed")
@@ -105,15 +95,7 @@ open class PostgreSQLConnection : DatabaseConnection {
                 log.error("socket timed out")
                 throw Errors.databaseConnectionError("socket timed out")
             default:
-                if !connected {
-                    break
-                }
-                
-                if C.FD_ISSET(sock, &rfds) {
-                    // ready to read from pg
-                    try handlePgRead(conn);
-                }
-                break;
+                break
             }
         }
     }
@@ -184,6 +166,7 @@ open class PostgreSQLConnection : DatabaseConnection {
     // https://www.postgresql.org/message-id/20160331195656.17bc0e3b@slate.meme.com
     override func execute(sql :String, bindings :[String:SQLConvertible]?) throws {
         try self.verifyConnection()
+        let start = Date.timeIntervalSinceReferenceDate
         let sent = PQsendQuery(self.connection, sql.cString(using:.utf8));
         if sent == 0 {
             log.error("Query Error: \(self.getErrorMessage(self.connection))")
@@ -191,16 +174,21 @@ open class PostgreSQLConnection : DatabaseConnection {
         }
         let singleRowMode = PQsetSingleRowMode(self.connection)
         if ( singleRowMode == 0 ) {
-            log.error("Could not set single row mode: \(self.getErrorMessage(self.connection))")
-            return
+            throw Errors.databaseConnectionError("Could not set single row mode: \(self.getErrorMessage(self.connection))")
         }
-        var opt :PQprintOpt = PQprintOpt()
-        opt.header = 1
-        opt.align = 1
+        var queryTime :TimeInterval? = nil
         var count = 0
         while true {
             guard let result = PQgetResult(self.connection) else {
                 break
+            }
+            if ( queryTime == nil ) {
+                let time = Date.timeIntervalSinceReferenceDate
+                log.debug("Query time: \(time - start)")
+                queryTime = time
+            }
+            defer {
+                PQclear(result)
             }
             let resultStatus = PQresultStatus(result)
             switch resultStatus {
@@ -238,11 +226,27 @@ open class PostgreSQLConnection : DatabaseConnection {
             default:
                 throw Errors.databaseConnectionError("result status not supported: \(resultStatus)")
             }
-            //PQprint(stdout, result, &opt);
+            
+            /*
+            var opt :PQprintOpt = PQprintOpt()
+            opt.header = 1
+            opt.align = 1
+            guard let fieldSeparator = "|".cString(using: .utf8) else {
+                throw Errors.databaseConnectionError("Could not set field separator")
+            }
+            opt.fieldSep = UnsafeMutablePointer(mutating:fieldSeparator)
+            PQprint(stdout, result, &opt);
+             */
         }
-        log.debug("fetched \(count) rows")
-    }
-    
+        
+        if let queryTime = queryTime {
+            let end = Date.timeIntervalSinceReferenceDate
+            let elapsed = end - queryTime
+            let rate = Double(count) / elapsed
+            log.debug("fetched \(count) rows in \(elapsed)s - \(rate)/s")
+        }
+}
+
     func getErrorMessage(_ conn :OpaquePointer?) -> String {
         guard let conn = conn else {
             return "Connection is null"
