@@ -14,7 +14,7 @@
     "CD1557C3AE966BEDF3490D85F9712687801B146C" : "PepperDogFetch\/Submodules\/XCGLogger\/",
     "B6E330E496A8BDB809CB756C484ADE61E52FFF20" : "PepperDogFetch\/",
     "5C58CBBBD6264A835FA1696A43B23051B4D929B0" : "PepperDogFetch\/Submodules\/hexdreamsCocoa\/",
-    "9A015C947BFD79B72C3F1158B2123D62640C54D0" : "PepperDogFetch\/SubModules\/libpq.framework\/"
+    "9A015C947BFD79B72C3F1158B2123D62640C54D0" : "PepperDogFetch\/Submodules\/libpq_framework\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "PepperDogFetch",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

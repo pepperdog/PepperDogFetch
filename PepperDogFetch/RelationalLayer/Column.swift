@@ -1,19 +1,18 @@
-//
-//  Column.swift
-//  PepperDogFetch
-//
-//  Created by Kenny Leung on 4/2/16.
-//  Copyright © 2016 Kenny Leung. All rights reserved.
-//
-
-import Foundation
 
 open class Column {
     
-    var name :String
+    var name           :String
+    var ordinal        :Int
+    var externalType   :String
+    var externalLength :String
+    var internalType   :Any.Type
     
-    init(name :String) {
-        self.name = name;
+    init(name:String, ordinal:Int, externalType:String, externalLength:String, internalType:Any.Type) {
+        self.name = name
+        self.ordinal = ordinal
+        self.externalType = externalType
+        self.externalLength = externalLength
+        self.internalType = internalType
     }
     
 }

@@ -39,8 +39,10 @@ class PepperDogFetchTests: XCTestCase {
 
     func testFetchComics() throws {
         let database = PostgreSQLDatabase(connectionDictionary:[
-            PostgreSQLConnectionDictionary.Host.rawValue:         "192.168.170.119",
-            PostgreSQLConnectionDictionary.Port.rawValue:         "6543",
+            // PostgreSQLConnectionDictionary.Host.rawValue:         "192.168.170.119",
+            PostgreSQLConnectionDictionary.Host.rawValue:         "localhost",
+            // PostgreSQLConnectionDictionary.Port.rawValue:         "6543",
+            PostgreSQLConnectionDictionary.Port.rawValue:         "5432",
             PostgreSQLConnectionDictionary.DatabaseName.rawValue: "comics",
             PostgreSQLConnectionDictionary.User.rawValue:         "comics",
             PostgreSQLConnectionDictionary.Password.rawValue:     "comics"

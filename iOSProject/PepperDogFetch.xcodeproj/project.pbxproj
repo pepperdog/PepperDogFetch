@@ -10,6 +10,8 @@
 		B907088D1CB0A8A100DF47BD /* PepperDogFetch.h in Headers */ = {isa = PBXBuildFile; fileRef = B907088C1CB0A8A100DF47BD /* PepperDogFetch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B90708941CB0A8A100DF47BD /* PepperDogFetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B90708891CB0A8A100DF47BD /* PepperDogFetch.framework */; };
 		B90708991CB0A8A100DF47BD /* PepperDogFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90708981CB0A8A100DF47BD /* PepperDogFetchTests.swift */; };
+		B918E71F1EDA6008004A47D7 /* PGType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B918E71E1EDA6008004A47D7 /* PGType.swift */; };
+		B944CD981E66ADEA0034AFEA /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B66DF91E57C44D004F5894 /* XCGLogger.framework */; };
 		B96FAF841CB0B7B0001502CB /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF831CB0B7B0001502CB /* Table.swift */; };
 		B96FAF861CB0B7C3001502CB /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF851CB0B7C3001502CB /* Column.swift */; };
 		B96FAF881CB0B7E9001502CB /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF871CB0B7E9001502CB /* Constraint.swift */; };
@@ -25,7 +27,8 @@
 		B9A336F41D20D7C700D64B25 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336F31D20D7C700D64B25 /* Row.swift */; };
 		B9A336F61D20D7F100D64B25 /* SQLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336F51D20D7F100D64B25 /* SQLConvertible.swift */; };
 		B9A336F71D20D85000D64B25 /* hexdreamsCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A336E21D20D20A00D64B25 /* hexdreamsCocoa.framework */; };
-		B9A336F91D20D87100D64B25 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A336EF1D20D28700D64B25 /* libpq.framework */; };
+		B9F7E74C1E66B5DD00B89B53 /* libpq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F7E74B1E66B5DD00B89B53 /* libpq.framework */; };
+		B9F804021ED0EF860058BE7F /* RowResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F804011ED0EF860058BE7F /* RowResultSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,8 @@
 		B90708931CB0A8A100DF47BD /* PepperDogFetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PepperDogFetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90708981CB0A8A100DF47BD /* PepperDogFetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PepperDogFetchTests.swift; sourceTree = "<group>"; };
 		B907089A1CB0A8A100DF47BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B918E71E1EDA6008004A47D7 /* PGType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGType.swift; sourceTree = "<group>"; };
+		B944CD991E66AE110034AFEA /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libpq.framework; path = "../../../build/PepperDogFetch-esuqrverwjrarebailkxzerpnzax/Build/Products/Debug-iphoneos/libpq.framework"; sourceTree = "<group>"; };
 		B96FAF831CB0B7B0001502CB /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		B96FAF851CB0B7C3001502CB /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		B96FAF871CB0B7E9001502CB /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
@@ -142,10 +147,11 @@
 		B9A336B71D20D08100D64B25 /* DatabaseConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseConnection.swift; sourceTree = "<group>"; };
 		B9A336BB1D20D1AD00D64B25 /* hexdreamsCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = hexdreamsCocoa.xcodeproj; path = ../Submodules/hexdreamsCocoa/iOSProject/hexdreamsCocoa.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B9A336C41D20D1CB00D64B25 /* XCGLogger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XCGLogger.xcodeproj; path = ../Submodules/XCGLogger/Sources/XCGLogger.xcodeproj; sourceTree = "<group>"; };
-		B9A336EF1D20D28700D64B25 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
 		B9A336F11D20D71700D64B25 /* PepperDogFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PepperDogFetch.swift; sourceTree = "<group>"; };
 		B9A336F31D20D7C700D64B25 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		B9A336F51D20D7F100D64B25 /* SQLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLConvertible.swift; sourceTree = "<group>"; };
+		B9F7E74B1E66B5DD00B89B53 /* libpq.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libpq.framework; sourceTree = "<group>"; };
+		B9F804011ED0EF860058BE7F /* RowResultSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowResultSet.swift; sourceTree = "<group>"; };
 		B9F844B51D663F800090F833 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -154,8 +160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B944CD981E66ADEA0034AFEA /* XCGLogger.framework in Frameworks */,
+				B9F7E74C1E66B5DD00B89B53 /* libpq.framework in Frameworks */,
 				B9A336F71D20D85000D64B25 /* hexdreamsCocoa.framework in Frameworks */,
-				B9A336F91D20D87100D64B25 /* libpq.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				B9A336A21D20CFD800D64B25 /* ResultSet.swift */,
+				B9F804011ED0EF860058BE7F /* RowResultSet.swift */,
 				B9A336A31D20CFD800D64B25 /* ResultSetIterator.swift */,
 				B96FAF831CB0B7B0001502CB /* Table.swift */,
 				B96FAF851CB0B7C3001502CB /* Column.swift */,
@@ -258,6 +266,7 @@
 				B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */,
 				B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */,
 				B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */,
+				B918E71E1EDA6008004A47D7 /* PGType.swift */,
 			);
 			path = PostgreSQLDatabase;
 			sourceTree = "<group>";
@@ -293,7 +302,7 @@
 		B9A336EE1D20D28700D64B25 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				B9A336EF1D20D28700D64B25 /* libpq.framework */,
+				B9F7E74B1E66B5DD00B89B53 /* libpq.framework */,
 			);
 			name = ThirdParty;
 			path = ../ThirdParty;
@@ -317,6 +326,7 @@
 		B9F844B41D663F800090F833 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B944CD991E66AE110034AFEA /* libpq.framework */,
 				B9F844B51D663F800090F833 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -381,16 +391,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Kenny Leung";
 				TargetAttributes = {
 					B90708881CB0A8A100DF47BD = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					B90708921CB0A8A100DF47BD = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -517,7 +527,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B918E71F1EDA6008004A47D7 /* PGType.swift in Sources */,
 				B9A336B81D20D08100D64B25 /* ConnectionPool.swift in Sources */,
+				B9F804021ED0EF860058BE7F /* RowResultSet.swift in Sources */,
 				B96FAF841CB0B7B0001502CB /* Table.swift in Sources */,
 				B9A336A41D20CFD800D64B25 /* ResultSet.swift in Sources */,
 				B9A336F41D20D7C700D64B25 /* Row.swift in Sources */,
@@ -572,14 +584,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -624,14 +642,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -678,7 +702,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -698,7 +723,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pepperdog-enteprises.PepperDogFetch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -709,7 +735,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pepperdog-enteprises.PepperDogFetchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -720,7 +747,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pepperdog-enteprises.PepperDogFetchTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

@@ -2,7 +2,7 @@
 import hexdreamsCocoa
 import libpq
 
-open class PostgreSQLConnection : DatabaseConnection {
+public class PostgreSQLConnection : DatabaseConnection {
     
     let connectionDictionary :[String:String]
     var connection :OpaquePointer?
@@ -19,7 +19,7 @@ open class PostgreSQLConnection : DatabaseConnection {
     
     // Google: postgresql asynchronous connection example
     // https://gist.github.com/revmischa/5384678
-    open func connect() throws {
+    func connect() throws {
         if self.connection != nil {
             return
         }
@@ -30,7 +30,10 @@ open class PostgreSQLConnection : DatabaseConnection {
             names.append(name)
             values.append(value)
         }
-        guard let conn = PQconnectStartParams(try names.cStringArray().pointer, try values.cStringArray().pointer, 0) else {
+        guard let conn = PQconnectStartParams(
+            try names.cStringArray().pointer,
+            try values.cStringArray().pointer,
+            0) else {
             throw Errors.databaseConnectionError("Could not create connection")
         }
         defer {
@@ -41,9 +44,12 @@ open class PostgreSQLConnection : DatabaseConnection {
         log.debug("Connecting...")
         try mainLoop(conn)
         self.connection = conn
+        
+        self.readDatabaseInfo()
+        
         log.debug("... connected successfully");
     }
-
+    
     private func mainLoop(_ conn :OpaquePointer) throws {
         var connected = false
         
@@ -77,7 +83,6 @@ open class PostgreSQLConnection : DatabaseConnection {
             case PGRES_POLLING_OK:
                 log.debug("PGRES_POLLING_OK")
                 connected = true
-                //try initListen(conn);
                 return
             case PGRES_POLLING_ACTIVE:  // deprecated
                 log.debug("PGRES_POLLING_ACTIVE - deprecated")
@@ -161,35 +166,41 @@ open class PostgreSQLConnection : DatabaseConnection {
     override func verifyConnection() throws {
         try self.connect()
     }
+    
+    override func execute(sql :String, bindings :[String:SQLConvertible]?) throws {
+        try self.execute(sql:sql, bindings:bindings, readRow:{return Row()})
+    }
 
+    // https://www.postgresql.org/docs/9.1/static/libpq-exec.html
     // https://www.postgresql.org/docs/9.1/static/libpq-async.html
     // https://www.postgresql.org/message-id/20160331195656.17bc0e3b@slate.meme.com
-    override func execute(sql :String, bindings :[String:SQLConvertible]?) throws {
+    func execute(sql :String, bindings :[String:SQLConvertible]?,
+                          readRow :() -> AnyObject) throws {
         try self.verifyConnection()
         let start = Date.timeIntervalSinceReferenceDate
-        let sent = PQsendQuery(self.connection, sql.cString(using:.utf8));
-        if sent == 0 {
+        
+        let sent = PQsendQueryParams(self.connection, sql.cString(using:.utf8), 0, nil, nil, nil, nil, 1)
+        guard sent != 0 else {
             log.error("Query Error: \(self.getErrorMessage(self.connection))")
             return
         }
+        
         let singleRowMode = PQsetSingleRowMode(self.connection)
         if ( singleRowMode == 0 ) {
             throw Errors.databaseConnectionError("Could not set single row mode: \(self.getErrorMessage(self.connection))")
         }
-        var queryTime :TimeInterval? = nil
+        
         var count = 0
+        var firstResultInterval :TimeInterval?
         while true {
             guard let result = PQgetResult(self.connection) else {
                 break
             }
-            if ( queryTime == nil ) {
-                let time = Date.timeIntervalSinceReferenceDate
-                log.debug("Query time: \(time - start)")
-                queryTime = time
-            }
             defer {
                 PQclear(result)
+                count += 1
             }
+            
             let resultStatus = PQresultStatus(result)
             switch resultStatus {
             case PGRES_EMPTY_QUERY: /* empty query string was executed */
@@ -220,32 +231,67 @@ open class PostgreSQLConnection : DatabaseConnection {
                 log.debug("PGRES_COPY_BOTH")
                 break
             case PGRES_SINGLE_TUPLE:  /* single tuple from larger resultset */
-                //log.debug("PGRES_SINGLE_TUPLE")
-                count += 1
+                if count == 0 {
+                    firstResultInterval = Date.timeIntervalSinceReferenceDate
+                    _ = try self.describeResults(from: result)
+                }
+                if count % 1000 == 0 {
+                    // log.debug("PGRES_SINGLE_TUPLE: \(count)")
+                }
                 break
             default:
                 throw Errors.databaseConnectionError("result status not supported: \(resultStatus)")
             }
             
-            /*
-            var opt :PQprintOpt = PQprintOpt()
-            opt.header = 1
-            opt.align = 1
-            guard let fieldSeparator = "|".cString(using: .utf8) else {
-                throw Errors.databaseConnectionError("Could not set field separator")
-            }
-            opt.fieldSep = UnsafeMutablePointer(mutating:fieldSeparator)
-            PQprint(stdout, result, &opt);
-             */
+            //var opt :PQprintOpt = PQprintOpt()
+            //opt.header = 1
+            //opt.align = 1
+            
+            // This is suggested by Jordan Rose, but doesn't work because of UInt8 vs Int8
+            //let separator: StaticString = "|"
+            //let x = UnsafeMutablePointer(mutating:separator.utf8Start as UnsafePointer<Int8>)
+            //opt.fieldSep = x
+
+            // This is a little uglier, but it does work.
+            //guard let fieldSeparator = "|".cString(using: .utf8) else {
+            //    throw Errors.databaseConnectionError("Could not set field separator")
+            //}
+            //opt.fieldSep = UnsafeMutablePointer(mutating:fieldSeparator)
+            //PQprint(stdout, result, &opt);
         }
         
-        if let queryTime = queryTime {
+        if let firstResultInterval = firstResultInterval {
             let end = Date.timeIntervalSinceReferenceDate
-            let elapsed = end - queryTime
+            let elapsed = end - firstResultInterval
             let rate = Double(count) / elapsed
             log.debug("fetched \(count) rows in \(elapsed)s - \(rate)/s")
         }
-}
+    }
+    
+    func describeResults(from pgresult:OpaquePointer) throws -> [Column] {
+        let nFields = PQnfields(pgresult)
+        //var columns = [Column]()
+        for i in 0..<nFields {
+            guard let fieldNameCString = PQfname(pgresult, i) else {
+                throw Errors.databaseError("Could not describe results. fieldName comes up null")
+            }
+            let fieldName = String(cString:fieldNameCString)
+            print("field: \(fieldName)")
+            //let format = PQfformat(pgresult, i)  // 0=text, 1=binary, other=reserved
+            let type = PQftype(pgresult, i) // You can query the system table pg_type to obtain the names and properties of the various data types. The OIDs of the built-in data types are defined in the file src/include/catalog/pg_type.h in the source tree.
+            let value = PQgetvalue(pgresult, 0, i)
+            //guard let
+            //let column = Column(name: fieldName, ordinal: i, externalType: <#T##String#>, externalLength: <#T##String#>, internalType: <#T##Any.Type#>)
+        }
+        
+        return [Column]()
+        
+        /* print out the row
+        for (j = 0; j < nFields; j++)
+        printf("%-15s", PQgetvalue(res, 0, j));
+        printf("\n");
+        */
+    }
 
     func getErrorMessage(_ conn :OpaquePointer?) -> String {
         guard let conn = conn else {
@@ -259,5 +305,14 @@ open class PostgreSQLConnection : DatabaseConnection {
         }
         return messageString
     }
+    
+    private func readDatabaseInfo() {
+        self.readTypes()
+    }
+    
+    private func readTypes() {
+        let sql = "SELECT oid, name, namespace, owner, len, byval, type, category, ispreferred, isdefined, delim, relid, elem, array, input, output, receive, send, modin, modout, analyze, align, storage, notnull, basetype, typmod, ndims, collation, defaultbin, defaultText, acl FROM pg_catalog.pg_type ORDER BY oid"
+    }
+
     
 }

@@ -1,0 +1,4 @@
+
+class RowResultSet: ResultSet<Row> {
+
+}
