@@ -1,13 +1,13 @@
 
 open class Database {
 
-    let connectionDictionary :[String:String]
+    let connectionDictionary :[ConnectionDictionaryKey:String]
 
     lazy var connectionPool :ConnectionPool = {
         return ConnectionPool(database:self)
     }()
 
-    init(connectionDictionary: [String:String]) {
+    init(connectionDictionary: [ConnectionDictionaryKey:String]) {
         self.connectionDictionary = connectionDictionary;
     }
 

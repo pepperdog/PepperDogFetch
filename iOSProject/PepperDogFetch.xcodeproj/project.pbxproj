@@ -15,10 +15,11 @@
 		B96FAF841CB0B7B0001502CB /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF831CB0B7B0001502CB /* Table.swift */; };
 		B96FAF861CB0B7C3001502CB /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF851CB0B7C3001502CB /* Column.swift */; };
 		B96FAF881CB0B7E9001502CB /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96FAF871CB0B7E9001502CB /* Constraint.swift */; };
+		B97ECFC11F6785410057CCE6 /* ConnectionDictionaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97ECFC01F6785410057CCE6 /* ConnectionDictionaryKey.swift */; };
 		B9A336A41D20CFD800D64B25 /* ResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336A21D20CFD800D64B25 /* ResultSet.swift */; };
 		B9A336A51D20CFD800D64B25 /* ResultSetIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336A31D20CFD800D64B25 /* ResultSetIterator.swift */; };
 		B9A336B11D20D07800D64B25 /* PostgreSQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */; };
-		B9A336B21D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */; };
+		B9A336B21D20D07800D64B25 /* PostgreSQLConnectionDictionaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionaryKey.swift */; };
 		B9A336B31D20D07800D64B25 /* PostgreSQLDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */; };
 		B9A336B81D20D08100D64B25 /* ConnectionPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B51D20D08100D64B25 /* ConnectionPool.swift */; };
 		B9A336B91D20D08100D64B25 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A336B61D20D08100D64B25 /* Database.swift */; };
@@ -137,10 +138,11 @@
 		B96FAF831CB0B7B0001502CB /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		B96FAF851CB0B7C3001502CB /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		B96FAF871CB0B7E9001502CB /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		B97ECFC01F6785410057CCE6 /* ConnectionDictionaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDictionaryKey.swift; sourceTree = "<group>"; };
 		B9A336A21D20CFD800D64B25 /* ResultSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSet.swift; sourceTree = "<group>"; };
 		B9A336A31D20CFD800D64B25 /* ResultSetIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultSetIterator.swift; sourceTree = "<group>"; };
 		B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLConnection.swift; sourceTree = "<group>"; };
-		B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLConnectionDictionary.swift; sourceTree = "<group>"; };
+		B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionaryKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLConnectionDictionaryKey.swift; sourceTree = "<group>"; };
 		B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostgreSQLDatabase.swift; sourceTree = "<group>"; };
 		B9A336B51D20D08100D64B25 /* ConnectionPool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPool.swift; sourceTree = "<group>"; };
 		B9A336B61D20D08100D64B25 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -264,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				B9A336AE1D20D07800D64B25 /* PostgreSQLConnection.swift */,
-				B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift */,
+				B9A336AF1D20D07800D64B25 /* PostgreSQLConnectionDictionaryKey.swift */,
 				B9A336B01D20D07800D64B25 /* PostgreSQLDatabase.swift */,
 				B918E71E1EDA6008004A47D7 /* PGType.swift */,
 			);
@@ -277,6 +279,7 @@
 				B9A336B51D20D08100D64B25 /* ConnectionPool.swift */,
 				B9A336B61D20D08100D64B25 /* Database.swift */,
 				B9A336B71D20D08100D64B25 /* DatabaseConnection.swift */,
+				B97ECFC01F6785410057CCE6 /* ConnectionDictionaryKey.swift */,
 			);
 			path = DatabaseLayer;
 			sourceTree = "<group>";
@@ -529,12 +532,13 @@
 			files = (
 				B918E71F1EDA6008004A47D7 /* PGType.swift in Sources */,
 				B9A336B81D20D08100D64B25 /* ConnectionPool.swift in Sources */,
+				B97ECFC11F6785410057CCE6 /* ConnectionDictionaryKey.swift in Sources */,
 				B9F804021ED0EF860058BE7F /* RowResultSet.swift in Sources */,
 				B96FAF841CB0B7B0001502CB /* Table.swift in Sources */,
 				B9A336A41D20CFD800D64B25 /* ResultSet.swift in Sources */,
 				B9A336F41D20D7C700D64B25 /* Row.swift in Sources */,
 				B9A336A51D20CFD800D64B25 /* ResultSetIterator.swift in Sources */,
-				B9A336B21D20D07800D64B25 /* PostgreSQLConnectionDictionary.swift in Sources */,
+				B9A336B21D20D07800D64B25 /* PostgreSQLConnectionDictionaryKey.swift in Sources */,
 				B9A336B31D20D07800D64B25 /* PostgreSQLDatabase.swift in Sources */,
 				B9A336BA1D20D08100D64B25 /* DatabaseConnection.swift in Sources */,
 				B9A336F61D20D7F100D64B25 /* SQLConvertible.swift in Sources */,

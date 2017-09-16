@@ -4,11 +4,11 @@ import libpq
 
 public class PostgreSQLConnection : DatabaseConnection {
     
-    let connectionDictionary :[String:String]
+    let connectionDictionary :[ConnectionDictionaryKey:String]
     var connection :OpaquePointer?
     let listenChannel = "foo"
     
-    init(connectionDictionary: [String:String]) {
+    init(connectionDictionary: [ConnectionDictionaryKey:String]) {
         self.connectionDictionary = connectionDictionary
     }
     
@@ -26,8 +26,8 @@ public class PostgreSQLConnection : DatabaseConnection {
         
         var names = [String]()
         var values = [String]()
-        for (name,value) in connectionDictionary {
-            names.append(name)
+        for (key,value) in connectionDictionary {
+            names.append(key.name)
             values.append(value)
         }
         guard let conn = PQconnectStartParams(
@@ -314,5 +314,43 @@ public class PostgreSQLConnection : DatabaseConnection {
         let sql = "SELECT oid, name, namespace, owner, len, byval, type, category, ispreferred, isdefined, delim, relid, elem, array, input, output, receive, send, modin, modout, analyze, align, storage, notnull, basetype, typmod, ndims, collation, defaultbin, defaultText, acl FROM pg_catalog.pg_type ORDER BY oid"
     }
 
-    
+    /*
+     comics=> \d pg_catalog.pg_type;
+     Table "pg_catalog.pg_type"
+     Column     |     Type     | Modifiers
+     ----------------+--------------+-----------
+     typname        | name         | not null
+     typnamespace   | oid          | not null
+     typowner       | oid          | not null
+     typlen         | smallint     | not null
+     typbyval       | boolean      | not null
+     typtype        | "char"       | not null
+     typcategory    | "char"       | not null
+     typispreferred | boolean      | not null
+     typisdefined   | boolean      | not null
+     typdelim       | "char"       | not null
+     typrelid       | oid          | not null
+     typelem        | oid          | not null
+     typarray       | oid          | not null
+     typinput       | regproc      | not null
+     typoutput      | regproc      | not null
+     typreceive     | regproc      | not null
+     typsend        | regproc      | not null
+     typmodin       | regproc      | not null
+     typmodout      | regproc      | not null
+     typanalyze     | regproc      | not null
+     typalign       | "char"       | not null
+     typstorage     | "char"       | not null
+     typnotnull     | boolean      | not null
+     typbasetype    | oid          | not null
+     typtypmod      | integer      | not null
+     typndims       | integer      | not null
+     typcollation   | oid          | not null
+     typdefaultbin  | pg_node_tree |
+     typdefault     | text         |
+     typacl         | aclitem[]    |
+     Indexes:
+     "pg_type_oid_index" UNIQUE, btree (oid)
+     "pg_type_typname_nsp_index" UNIQUE, btree (typname, typnamespace)
+ */
 }

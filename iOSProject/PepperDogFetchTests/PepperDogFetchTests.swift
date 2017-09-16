@@ -38,15 +38,14 @@ class PepperDogFetchTests: XCTestCase {
     }
 
     func testFetchComics() throws {
-        let database = PostgreSQLDatabase(connectionDictionary:[
-            // PostgreSQLConnectionDictionary.Host.rawValue:         "192.168.170.119",
-            PostgreSQLConnectionDictionary.Host.rawValue:         "localhost",
-            // PostgreSQLConnectionDictionary.Port.rawValue:         "6543",
-            PostgreSQLConnectionDictionary.Port.rawValue:         "5432",
-            PostgreSQLConnectionDictionary.DatabaseName.rawValue: "comics",
-            PostgreSQLConnectionDictionary.User.rawValue:         "comics",
-            PostgreSQLConnectionDictionary.Password.rawValue:     "comics"
-            ])
+        let connDict :[PostgreSQLConnectionDictionaryKey:String] = [
+            .Host:         "localhost",
+            .Port:         "5432",
+            .DatabaseName: "comics",
+            .User:         "comics",
+            .Password:     "comics"
+        ]
+        let database = PostgreSQLDatabase(connectionDictionary: connDict)
         let results = try database.execute(sql: "select * from gcd_issue", bindings: nil)
 
         for i in results {
